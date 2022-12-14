@@ -4,11 +4,14 @@ terraform {
       source = "hashicorp/aws"
     }
   }
+<<<<<<< HEAD
   /* backend "s3" {
     bucket = "tech-tweakers-tfstates"
     key    = "first-lab-terraform.tfstate"
     region = "us-east-1"
   } */
+=======
+>>>>>>> 132b83d (fix: queues name var)
 }
 
 locals {
@@ -28,7 +31,14 @@ provider "aws" {
 
 module "sqs-queue" {
   source = "../"
+<<<<<<< HEAD
   name                           = "test-sqs-module"
+=======
+
+  queue_name = "test-123123"
+  dlq_name = "test-123123"
+
+>>>>>>> 132b83d (fix: queues name var)
   create_dlq                     = true
   tags                           = local.common_tags
 }
