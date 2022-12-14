@@ -1,23 +1,5 @@
-<<<<<<< HEAD
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
-
-locals {
-  queue_name = "test-queue"
-  dlq_name = "test-dlqueue"
-}
-
-resource "aws_sqs_queue" "main" {
-  name                        = local.queue_name
-=======
 resource "aws_sqs_queue" "main" {
   name                        = var.queue_name
->>>>>>> 132b83d (fix: queues name var)
   visibility_timeout_seconds  = var.visibility_timeout_seconds
   message_retention_seconds   = var.message_retention_seconds
   max_message_size            = var.max_message_size
@@ -39,11 +21,7 @@ resource "aws_sqs_queue" "main" {
 
 resource "aws_sqs_queue" "dlq_main" {
   count                       = var.create_dlq ? 1 : 0
-<<<<<<< HEAD
-  name                        = local.dlq_name
-=======
   name                        = var.dlq_name
->>>>>>> 132b83d (fix: queues name var)
   visibility_timeout_seconds  = var.visibility_timeout_seconds
   message_retention_seconds   = var.message_retention_seconds
   max_message_size            = var.max_message_size
